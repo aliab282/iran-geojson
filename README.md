@@ -1,4 +1,4 @@
-iran-geojson
+Iran-geojson
 ============
 
-GeoJSON coordinates of Iran map along with its states.
+GeoJSON geometery of Iran map along with its states. This repository contains the GeoJSON and TopoJSON of iran map.
