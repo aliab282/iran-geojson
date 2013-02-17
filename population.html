@@ -16,10 +16,13 @@
 #states{
   fill: rgb(188, 189, 220);
   stroke: #FFF;
-  stroke-width: 0.5px;
   opacity: 0.85;
 }
- 
+
+path:hover{
+
+}
+
 #states .active {
   /*fill: lightblue;*/
   fill: rgb(117, 107, 177);
@@ -38,7 +41,13 @@ text {
   </head>
 <body>
 
+<div>
+  <div>
+    <span id="ostan"></span> popultion: <span id="ostpop"></span>
+  </div>
+
 <div id="map">
+</div>
 </div>
 
   <script type="text/javascript">
@@ -195,7 +204,8 @@ function click(d) {
 }
 
 function mousemove(d){
-
+  $('#ostan').text(d.id);
+  $('#ostpop').text(population[d.id]);s
 }
   </script>
 
