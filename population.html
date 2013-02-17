@@ -4,6 +4,8 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v0.min.js"></script>
     <script src="http://rud.is/passheat/assets/js/jquery.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
+    
     <style type="text/css">
 .background {
   fill: none;
@@ -95,12 +97,6 @@ var svg = d3.select("#map").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-svg.append("rect")
-    .attr("class", "background")
-    .attr("width", width)
-    .attr("height", height)
-    .on("click", click);
-
 var g = svg.append("g")
     .attr("transform", "translate(0,0)")
   .append("g")
@@ -120,7 +116,7 @@ var colorScale = d3.scale.linear()
 
 // legend as gradient
 var leg = svg.append("g")
-    .attr("transform", "translate(10,50)")
+    .attr("transform", "translate(10,400)")
   .append("g")
     .attr("id", "legend");
 var gradient = leg.append("svg:defs")

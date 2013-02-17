@@ -7,6 +7,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v0.min.js"></script>
     <script src="http://rud.is/passheat/assets/js/jquery.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
     <!-- Le styles -->
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="http://ifont.ir/apicode/38">
@@ -101,6 +102,20 @@ path:hover {
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.png">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38583306-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 
   <body>
@@ -128,7 +143,24 @@ path:hover {
 	<a href="iran_topo.json" class="btn btn-small btn-warning"><i class="icon-download"></i>TOPO JSON</a>
 	<a href="https://github.com/nasir5959/iran-geojson" class="btn btn-small">Github Project</a>
 	</div>
-	<div id="map"></div>
+
+<div id="myCarousel" class="carousel" data-interval="false" style="direction:ltr">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="active item">
+        <iframe src="population.html" width="1000" height="700"></iframe>
+    </div>
+    <div class="item">
+        <iframe src="iran2.html" width="1000" height="700"></iframe>
+    </div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+
+
       <div class="row-fluid marketing">
         <div class="span12" style="text-alight:right">
           <p> نقشه بالا توسط کتابخانه قدرتمندِ <a href="http://d3js.org/">D3.js</a> و اطلاعات نقشه iran-geojson ساخته شده است. برای مشاهده کد، سورس این صفحه را در گیت‌هاب ببینید. </p>
@@ -152,75 +184,5 @@ path:hover {
 
     </div> <!-- /container -->
 
-  <script type="text/javascript">
-var width = 960,
-    height = 700,
-    centered;
-
-var projection = d3.geo.albers();
-var path = d3.geo.path().projection(projection);
-
-
-var svg = d3.select("#map").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-console.log(svg);
-svg.append("rect")
-    .attr("class", "background")
-    .attr("width", width)
-    .attr("height", height)
-
-
-var g = svg.append("g")
-    .attr("transform", "translate(0,0)")
-  .append("g")
-    .attr("id", "states");
-
-d3.json("iran_topo.json", function(error, iran) {
-console.log(iran);
-    var subunits = topojson.object(iran, iran.objects.iran);
-
-    var projection = d3.geo.mercator()
-    .center([51, 35])
-        .scale(13000)
-        .translate([width / 2.5, height / 2.5]);
-
-    var path = d3.geo.path()
-        .projection(projection);
-
-
-	g.selectAll("path")
-      .data(topojson.object(iran, iran.objects.iran).geometries)
-    .enter().append("path")
-      .attr("d", path)
-
-
-    g.selectAll("text")
-    .data(topojson.object(iran, iran.objects.iran).geometries)
-    .enter()
-    .append("svg:text")
-    .text(function(d){
-        return d.id;
-    })
-    .attr("class", "maplab")
-    .attr("x", function(d){
-        return path.centroid(d)[0];
-    })
-    .attr("y", function(d){
-        return  path.centroid(d)[1];
-    })
-    .attr("text-anchor","middle")
-    .attr('font-size','6pt');
-
-});
-
-  </script>
-
-    <!-- Le javascript
-
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-  
 
 </body></html>

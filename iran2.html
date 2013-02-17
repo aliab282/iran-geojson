@@ -59,12 +59,6 @@ var svg = d3.select("#map").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-svg.append("rect")
-    .attr("class", "background")
-    .attr("width", width)
-    .attr("height", height)
-    .on("click", click);
-
 var g = svg.append("g")
     .attr("transform", "translate(0,0)")
   .append("g")
